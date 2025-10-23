@@ -19,11 +19,11 @@ private:
     }
 
 public:
-    Obj(string name, double mass, double x, double y): 
+    Obj(string name, double mass, double x, double y, double fx, double fy): 
         name(name), 
-        mass(mass), 
+        mass(mass),
         pos(new MyPair(x, y)), 
-        force(new MyPair(0, 0)), 
+        force(new MyPair(fx, fy)), 
         speed(new MyPair(0, 0)) {}
 
     ~Obj() {
@@ -48,7 +48,7 @@ public:
     
     void pulling(Obj *a) {
         Obj *b = this;
-        MyPair *dab = &MyPair(
+        MyPair *dab = new MyPair(
             b->getPos()->getX() - a->getPos()->getX(), 
             b->getPos()->getY() - a->getPos()->getY()
         ); 
@@ -62,6 +62,8 @@ public:
         // inverse dab to describe how b pull a
         dab->scale(-1);
         a->applyForce(*dab);
+
+        delete dab;
     }
 
     void applyForce(MyPair& f) {

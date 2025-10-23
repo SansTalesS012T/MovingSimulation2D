@@ -1,3 +1,5 @@
+#ifndef SYSTEMGUARD
+#define SYSTEMGUARD
 #include <iostream>
 #include "Obj.h"
 using namespace std;
@@ -34,3 +36,4 @@ public:
 
     }
 };
+#endif

@@ -1,9 +1,8 @@
-#include <iostream>
-#include "Obj.h"
+#include "System.h"
 using namespace std;
 
 int main() {
-    Obj a("A", 20.11, 5, 0);
-    a.print();
+    System s(1080, 720);
+    s.addObject(new Obj("A", 20.55, 0, 0, 1, 2));
     return 0;
 }

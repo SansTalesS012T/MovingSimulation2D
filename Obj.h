@@ -35,8 +35,14 @@ public:
     void move(vector<Obj*>& objList, double timeDiff) {
         int size = objList.size();
         for(int i = 0; i < size; i++) {
-            if(objList[i] == nullptr) continue;
-                
+            for(int j = i + 1; j < size; j++) {
+                objList[i]->pulling(objList[j]);
+            }
+        }
+
+        for(int i = 0; i < size; i++) {
+            objList[i]->calculateSpeed(timeDiff);
+            objList[i]->changePostion(timeDiff);
         }
     }
     
